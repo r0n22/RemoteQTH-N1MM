@@ -12,8 +12,7 @@ sock = socket.socket(socket.AF_INET, # Internet
                      socket.SOCK_DGRAM) # UDP
 sock.bind((UDP_IP_Recieve, UDP_PORT_Recieve))
 
-send = socket.socket(socket.AF_INET,
-		     socket.SOCK_STREAM)
+sendTCP = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 print "Program Started:"
 while True:
@@ -21,5 +20,7 @@ while True:
     tree = ET.fromstring(data)
     Heading = int(float(tree.find("goazi").text))
     print "Beam Heading at "+ str(Heading) + " Degrees"
-    print "Packet Sent :AP1" + "{0:03d}".format(Heading) +";"
-    sock.sendto("AP1" + "{0:03d}".format(Heading) +";", (TCP_IP_Send, TCP_Port_Send))
+    print "Packet Sent :AP1" + "{0:03d}".format(Heading) +";AM1;\r"
+    sendTCP.connect((TCP_IP_Send, TCP_Port_Send))
+    sendTCP.send("AP1" + "{0:03d}".format(Heading) +";AM1;\r")
+    sendTCP.close()
