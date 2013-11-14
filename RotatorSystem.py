@@ -13,7 +13,7 @@ sock = socket.socket(socket.AF_INET, # Internet
 sock.bind((UDP_IP_Recieve, UDP_PORT_Recieve))
 
 send = socket.socket(socket.AF_INET,
-					 socket.SOCK_STREAM)
+		     socket.SOCK_STREAM)
 
 print "Program Started:"
 while True:
