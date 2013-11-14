@@ -2,7 +2,7 @@ import socket
 import xml.etree.ElementTree as ET
 
 
-UDP_IP_Recieve = "127.0.0.1"
+UDP_IP_Recieve = ''  
 UDP_PORT_Recieve = 12040
 
 TCP_IP_Send = "127.0.0.1"
